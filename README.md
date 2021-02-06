@@ -2,6 +2,37 @@
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
+[cdkactions](https://github.com/ArmaanT/cdkactions) for use by PixelOutlaw GitHub actions workflows.
+
+## Usage
+
+Follow the [setup instructions for cdkactions](https://github.com/ArmaanT/cdkactions/blob/master/docs/getting-started/typescript.md) and setup your main.ts like below:
+
+```typescript
+import { Construct } from "constructs";
+import { App, Stack } from "cdkactions";
+import {
+  createGradlePluginPullRequestWorkflow,
+  createGradlePluginPrepareForReleaseWorkflow,
+  createGradlePluginReleaseWorkflow
+} from "@pixeloutlaw/github-cdkactions";
+
+export class MyStack extends Stack {
+  constructor(scope: Construct, id: string) {
+    super(scope, id);
+
+    // define workflows here
+    createGradlePluginPullRequestWorkflow(this);
+    createGradlePluginPrepareForReleaseWorkflow(this);
+    createGradlePluginReleaseWorkflow(this);
+  }
+}
+
+const app = new App();
+new MyStack(app, 'cdk');
+app.synth();
+```
+
 ## Commands
 
 To run github-cdkactions, use:
