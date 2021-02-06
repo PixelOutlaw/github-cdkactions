@@ -14,7 +14,7 @@ export const createGradlePluginReleaseWorkflow = (stack: Stack): Workflow => {
       {
         name: "Check-out Code",
         uses: "actions/checkout@v2",
-        with: { "fetch-depth": "0" },
+        with: { "fetch-depth": 0 },
       },
       {
         name: "Build Changelog",

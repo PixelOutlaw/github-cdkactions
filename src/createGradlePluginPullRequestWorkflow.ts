@@ -24,7 +24,7 @@ export const createGradlePluginPullRequestWorkflow = (
       {
         name: "Check-out Code",
         uses: "actions/checkout@v2",
-        with: { "fetch-depth": "0" },
+        with: { "fetch-depth": 0 },
       },
       {
         name: "Set up JDK",

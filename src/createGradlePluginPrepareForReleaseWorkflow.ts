@@ -17,7 +17,7 @@ export const createGradlePluginPrepareForReleaseWorkflow = (
       {
         name: "Check-out Code",
         uses: "actions/checkout@v2",
-        with: { "fetch-depth": "0" },
+        with: { "fetch-depth": 0 },
       },
       {
         name: "Install GitVersion",
@@ -54,7 +54,7 @@ export const createGradlePluginPrepareForReleaseWorkflow = (
           custom_tag: `\${{ steps.gitversion.outputs.semVer }}`,
           github_token: `\${{ secrets.ACTIONS_PAT }}`,
           tag_prefix: "",
-          create_annotated_tag: "true",
+          create_annotated_tag: true,
         },
       },
       {
