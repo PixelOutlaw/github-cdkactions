@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Build, lint, and test on Node 14
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Use Node 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn --immutable
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Test
+        run: yarn test --ci --coverage --maxWorkers=2
+
+      - name: Build
+        run: yarn build
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Use Node 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn --immutable
+
+      - name: Run semantic-release
+        run: yarn dlx semantic-release
+        env:
+          NPM_TOKEN: ${{ secrets.ACTIONS_NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT }}
