@@ -2,7 +2,8 @@ import { Job, Stack, Workflow } from "cdkactions";
 import dedent from "ts-dedent";
 
 export const createGradlePluginPrepareForReleaseWorkflow = (
-  stack: Stack
+  stack: Stack,
+  pluginName: string
 ): Workflow => {
   const workflow = new Workflow(stack, "prepare-for-release", {
     name: "Prepare For Release",
@@ -45,7 +46,7 @@ export const createGradlePluginPrepareForReleaseWorkflow = (
       {
         name: "Test Plugin Directly with Gradle",
         run: dedent`../gradlew check`,
-        workingDirectory: "pixeloutlaw-gradle-plugin",
+        workingDirectory: pluginName,
       },
       {
         name: "Test Plugin Application with Gradle",
@@ -63,7 +64,7 @@ export const createGradlePluginPrepareForReleaseWorkflow = (
       },
       {
         name: "Publish Plugins to Gradle Plugin Portal",
-        run: dedent`./gradlew :pixeloutlaw-gradle-plugin:publishPlugins \
+        run: dedent`./gradlew :${pluginName}:publishPlugins \
           -Pversion=\${{ steps.gitversion.outputs.semVer }} \
           -Pgradle.publish.key=\${{ secrets.GRADLE_PUBLISH_KEY }} \
           -Pgradle.publish.secret=\${{ secrets.GRADLE_PUBLISH_SECRET }}`,

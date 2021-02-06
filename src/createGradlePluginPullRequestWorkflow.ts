@@ -2,7 +2,8 @@ import { Job, Stack, Workflow } from "cdkactions";
 import dedent from "ts-dedent";
 
 export const createGradlePluginPullRequestWorkflow = (
-  stack: Stack
+  stack: Stack,
+  pluginName: string
 ): Workflow => {
   const workflow = new Workflow(stack, "pull-request", {
     name: "Pull Request",
@@ -42,7 +43,7 @@ export const createGradlePluginPullRequestWorkflow = (
       {
         name: "Test Plugin Directly with Gradle",
         run: dedent`../gradlew check`,
-        workingDirectory: "pixeloutlaw-gradle-plugin",
+        workingDirectory: pluginName,
       },
       {
         name: "Test Plugin Application with Gradle",
