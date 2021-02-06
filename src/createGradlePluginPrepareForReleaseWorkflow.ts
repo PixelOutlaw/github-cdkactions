@@ -35,6 +35,10 @@ export const createGradlePluginPrepareForReleaseWorkflow = (
         with: { "java-version": "1.8" },
       },
       {
+        name: "Make Gradle Wrapper Executable",
+        run: dedent`chmod +x ./gradlew`,
+      },
+      {
         name: "Set Gradle Version",
         run: dedent`./gradlew wrapper --gradle-version 6.8.2`,
       },
