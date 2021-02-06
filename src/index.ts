@@ -1,3 +1,3 @@
-export { GradlePluginPullRequestWorkflow } from "./GradlePluginPullRequestWorkflow";
-export { GradlePluginPrepareForReleaseWorkflow } from "./GradlePluginPrepareForReleaseWorkflow";
-export { GradlePluginReleaseWorkflow } from "./GradlePluginReleaseWorkflow";
+export { createGradlePluginPullRequestWorkflow } from "./createGradlePluginPullRequestWorkflow";
+export { createGradlePluginPrepareForReleaseWorkflow } from "./createGradlePluginPrepareForReleaseWorkflow";
+export { createGradlePluginReleaseWorkflow } from "./createGradlePluginReleaseWorkflow";

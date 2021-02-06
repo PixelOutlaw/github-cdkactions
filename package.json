@@ -20,6 +20,7 @@
   "scripts": {
     "analyze": "size-limit --why",
     "build": "tsdx build",
+    "commit": "cz",
     "lint": "tsdx lint",
     "postinstall": "is-ci || husky install",
     "postpublish": "pinst --enable",
