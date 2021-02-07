@@ -1,8 +1,9 @@
-import { Job, Stack, Workflow } from "cdkactions";
+import { Job, Stack, StepsProps, Workflow } from "cdkactions";
 import dedent from "ts-dedent";
 
 export const createGradleLibraryPullRequestWorkflow = (
-  stack: Stack
+  stack: Stack,
+  preTestSteps: StepsProps[] = []
 ): Workflow => {
   const workflow = new Workflow(stack, "pull-request", {
     name: "Pull Request",
@@ -33,6 +34,7 @@ export const createGradleLibraryPullRequestWorkflow = (
         name: "Set Gradle Version",
         run: dedent`./gradlew wrapper --gradle-version 6.8.2`,
       },
+      ...preTestSteps, // expand preTestSteps
       {
         name: "Test Library with Gradle",
         run: dedent`./gradlew check`,
