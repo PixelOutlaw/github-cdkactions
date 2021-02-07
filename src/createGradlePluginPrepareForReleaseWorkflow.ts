@@ -22,13 +22,13 @@ export const createGradlePluginPrepareForReleaseWorkflow = (
       },
       {
         name: "Install GitVersion",
-        uses: "gittools/actions/gitversion/setup@v0.9.7",
+        uses: "gittools/actions/gitversion/setup@v0.9.9",
         with: { versionSpec: "5.x" },
       },
       {
         name: "Determine Version",
         id: "gitversion",
-        uses: "gittools/actions/gitversion/execute@v0.9.7",
+        uses: "gittools/actions/gitversion/execute@v0.9.9",
       },
       {
         name: "Set up JDK",
