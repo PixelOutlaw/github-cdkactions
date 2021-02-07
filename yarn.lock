@@ -1820,7 +1820,7 @@ __metadata:
     "@types/eslint": 7.2.6
     "@types/eslint-plugin-prettier": 3.1.0
     "@types/is-ci": 2.0.0
-    "@types/js-yaml": ^4
+    "@types/js-yaml": 4.0.0
     "@types/node": 14.14.25
     "@types/prettier": 2.2.0
     "@types/semantic-release": 17.2.0
@@ -1843,7 +1843,7 @@ __metadata:
     eslint-plugin-react-hooks: 4.2.0
     husky: next
     is-ci: 2.0.0
-    js-yaml: ^4.0.0
+    js-yaml: 4.0.0
     pinst: 2.1.4
     prettier: 2.2.1
     prettier-plugin-pkg: 0.8.0
@@ -2265,7 +2265,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/js-yaml@npm:^4":
+"@types/js-yaml@npm:4.0.0":
   version: 4.0.0
   resolution: "@types/js-yaml@npm:4.0.0"
   checksum: 7a4431db3069988c5fa7fd00be45f18f6e355ab227b3ba23c993eeb949ee6ee39bf7180663b94f5a2378bece277ec4c49f26a27189edc263da7eeb6cd4a09d27
@@ -8255,6 +8255,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"js-yaml@npm:4.0.0, js-yaml@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "js-yaml@npm:4.0.0"
+  dependencies:
+    argparse: ^2.0.1
+  bin:
+    js-yaml: bin/js-yaml.js
+  checksum: ee9b16cdbba690ec70f46d61737b28b35e26e6d51606c466de7fa876d3517de0cfdffd2e1ef21263d5ca3b32659d2e4c65255f50d6e236f022305bce72242d46
+  languageName: node
+  linkType: hard
+
 "js-yaml@npm:^3.10.0, js-yaml@npm:^3.13.1":
   version: 3.14.1
   resolution: "js-yaml@npm:3.14.1"
@@ -8264,17 +8275,6 @@ __metadata:
   bin:
     js-yaml: bin/js-yaml.js
   checksum: 46b61f889796a20d16b0b64580a01b6a02b2e45c1a2744906346da54d07e14cde764e887ab6d1512d8b2541c63711bd4b75859c28eb99605baf59fa173fc38c2
-  languageName: node
-  linkType: hard
-
-"js-yaml@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "js-yaml@npm:4.0.0"
-  dependencies:
-    argparse: ^2.0.1
-  bin:
-    js-yaml: bin/js-yaml.js
-  checksum: ee9b16cdbba690ec70f46d61737b28b35e26e6d51606c466de7fa876d3517de0cfdffd2e1ef21263d5ca3b32659d2e4c65255f50d6e236f022305bce72242d46
   languageName: node
   linkType: hard
 
