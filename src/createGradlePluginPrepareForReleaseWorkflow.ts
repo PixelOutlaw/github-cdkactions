@@ -1,9 +1,11 @@
 import { Job, Stack, Workflow } from "cdkactions";
 import dedent from "ts-dedent";
 
+import { GradlePluginConfig } from "./types";
+
 export const createGradlePluginPrepareForReleaseWorkflow = (
   stack: Stack,
-  pluginName: string
+  config: GradlePluginConfig
 ): Workflow => {
   const workflow = new Workflow(stack, "prepare-for-release", {
     name: "Prepare For Release",
@@ -11,6 +13,10 @@ export const createGradlePluginPrepareForReleaseWorkflow = (
       push: { branches: ["main"] },
     },
   });
+
+  const pluginName = config.pluginName;
+  const primaryGradleVersion = config.primaryGradleVersion ?? "6.8.2";
+
   new Job(workflow, "prepare-for-release", {
     name: "Prepare For Release",
     runsOn: "ubuntu-latest",
@@ -41,7 +47,7 @@ export const createGradlePluginPrepareForReleaseWorkflow = (
       },
       {
         name: "Set Gradle Version",
-        run: dedent`./gradlew wrapper --gradle-version 6.8.2`,
+        run: dedent`./gradlew wrapper --gradle-version ${primaryGradleVersion}`,
       },
       {
         name: "Test Plugin Directly with Gradle",

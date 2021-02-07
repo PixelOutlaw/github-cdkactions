@@ -1,9 +1,11 @@
 import { Job, Stack, Workflow } from "cdkactions";
 import dedent from "ts-dedent";
 
+import { GradlePluginConfig } from "./types";
+
 export const createGradlePluginPullRequestWorkflow = (
   stack: Stack,
-  pluginName: string
+  config: GradlePluginConfig
 ): Workflow => {
   const workflow = new Workflow(stack, "pull-request", {
     name: "Pull Request",
@@ -12,12 +14,16 @@ export const createGradlePluginPullRequestWorkflow = (
       push: { branchesIgnore: ["main"] },
     },
   });
+
+  const pluginName = config.pluginName;
+  const supportedGradleVersions = config.supportedGradleVersions ?? ["6.8.2"];
+
   new Job(workflow, "pull-request", {
     name: "CI",
     runsOn: "ubuntu-latest",
     strategy: {
       matrix: {
-        gradle: ["6.7.1", "6.8.2"],
+        gradle: supportedGradleVersions,
         java: ["1.8", "11", "15"],
       },
     },

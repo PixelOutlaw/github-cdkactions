@@ -28,7 +28,7 @@
     "prepublishOnly": "pinst --disable",
     "size": "size-limit",
     "start": "tsdx watch",
-    "test": "tsdx test --passWithNoTests"
+    "test": "tsdx test"
   },
   "config": {
     "commitizen": {
@@ -48,6 +48,7 @@
     "@types/eslint": "7.2.6",
     "@types/eslint-plugin-prettier": "3.1.0",
     "@types/is-ci": "2.0.0",
+    "@types/js-yaml": "^4",
     "@types/node": "14.14.25",
     "@types/prettier": "2.2.0",
     "@types/semantic-release": "17.2.0",
@@ -57,7 +58,6 @@
     "babel-eslint": "10.1.0",
     "commitizen": "4.2.3",
     "cz-conventional-changelog": "3.3.0",
-    "dripip": "0.10.0",
     "eslint": "7.19.0",
     "eslint-config-prettier": "7.2.0",
     "eslint-config-react-app": "6.0.0",
@@ -69,6 +69,7 @@
     "eslint-plugin-react-hooks": "4.2.0",
     "husky": "next",
     "is-ci": "2.0.0",
+    "js-yaml": "^4.0.0",
     "pinst": "2.1.4",
     "prettier": "2.2.1",
     "prettier-plugin-pkg": "0.8.0",

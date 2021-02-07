@@ -1,9 +1,11 @@
-import { Job, Stack, StepsProps, Workflow } from "cdkactions";
+import { Job, Stack, Workflow } from "cdkactions";
 import dedent from "ts-dedent";
+
+import { GradleLibraryConfig } from "./types";
 
 export const createGradleLibraryPrepareForReleaseWorkflow = (
   stack: Stack,
-  preTestSteps: StepsProps[] = []
+  config?: GradleLibraryConfig
 ): Workflow => {
   const workflow = new Workflow(stack, "prepare-for-release", {
     name: "Prepare For Release",
@@ -11,6 +13,9 @@ export const createGradleLibraryPrepareForReleaseWorkflow = (
       push: { branches: ["main"] },
     },
   });
+
+  const preTestSteps = config?.preTestSteps ?? [];
+
   new Job(workflow, "prepare-for-release", {
     name: "Prepare For Release",
     runsOn: "ubuntu-latest",

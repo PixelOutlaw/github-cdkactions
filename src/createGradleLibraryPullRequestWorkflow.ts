@@ -1,9 +1,11 @@
-import { Job, Stack, StepsProps, Workflow } from "cdkactions";
+import { Job, Stack, Workflow } from "cdkactions";
 import dedent from "ts-dedent";
+
+import { GradleLibraryConfig } from "./types";
 
 export const createGradleLibraryPullRequestWorkflow = (
   stack: Stack,
-  preTestSteps: StepsProps[] = []
+  config?: GradleLibraryConfig
 ): Workflow => {
   const workflow = new Workflow(stack, "pull-request", {
     name: "Pull Request",
@@ -12,6 +14,10 @@ export const createGradleLibraryPullRequestWorkflow = (
       push: { branchesIgnore: ["main"] },
     },
   });
+
+  const gradleVersion = config?.gradleVersion ?? "6.8.2";
+  const preTestSteps = config?.preTestSteps ?? [];
+
   new Job(workflow, "pull-request", {
     name: "CI",
     runsOn: "ubuntu-latest",
@@ -32,7 +38,7 @@ export const createGradleLibraryPullRequestWorkflow = (
       },
       {
         name: "Set Gradle Version",
-        run: dedent`./gradlew wrapper --gradle-version 6.8.2`,
+        run: dedent`./gradlew wrapper --gradle-version ${gradleVersion}`,
       },
       ...preTestSteps, // expand preTestSteps
       {
