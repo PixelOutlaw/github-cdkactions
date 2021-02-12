@@ -1805,7 +1805,7 @@ __metadata:
     "@commitlint/cli": 11.0.0
     "@commitlint/config-conventional": 11.0.0
     "@size-limit/file": 4.9.2
-    "@trivago/prettier-plugin-sort-imports": 1.4.1
+    "@trivago/prettier-plugin-sort-imports": 1.4.2
     "@types/eslint": 7.2.6
     "@types/eslint-plugin-prettier": 3.1.0
     "@types/is-ci": 2.0.0
@@ -2069,9 +2069,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trivago/prettier-plugin-sort-imports@npm:1.4.1":
-  version: 1.4.1
-  resolution: "@trivago/prettier-plugin-sort-imports@npm:1.4.1"
+"@trivago/prettier-plugin-sort-imports@npm:1.4.2":
+  version: 1.4.2
+  resolution: "@trivago/prettier-plugin-sort-imports@npm:1.4.2"
   dependencies:
     "@babel/core": ^7.11.4
     "@babel/generator": ^7.10.5
@@ -2082,7 +2082,7 @@ __metadata:
     javascript-natural-sort: ^0.7.1
     lodash: ^4.17.20
     prettier: ^2.0.5
-  checksum: 8aa291d72ef4bf90f62e78474bb45e9c0742181c5663ca419e09b3ddbde79a592237876a548e8d2068e69960b128c6ed04cb497beb27331a4b55faf54db6a5a5
+  checksum: 2b3e9084d21e0dc06e6805c2f597ed963d2b583600a66f32c2dc469b90fb1bf6606e76b7155f9f245510db555e880a3597a763f9c6bd4aa6c1349de3b4a6a209
   languageName: node
   linkType: hard
 
