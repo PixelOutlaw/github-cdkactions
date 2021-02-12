@@ -1819,7 +1819,7 @@ __metadata:
     babel-eslint: 10.1.0
     cdkactions: 0.2.3
     commitizen: 4.2.3
-    constructs: 3.3.18
+    constructs: 3.3.20
     cz-conventional-changelog: 3.3.0
     eslint: 7.19.0
     eslint-config-prettier: 7.2.0
@@ -4340,10 +4340,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"constructs@npm:3.3.18":
-  version: 3.3.18
-  resolution: "constructs@npm:3.3.18"
-  checksum: 3c2974874609465f09c2203bb57ce3e7add9dc03d3b17acb4134be484ad6ca20f66dda01bc041f36027838806cfa80418fe326e16585ec1a6a65148af4cc5da6
+"constructs@npm:3.3.20":
+  version: 3.3.20
+  resolution: "constructs@npm:3.3.20"
+  checksum: 34f421fc76c1342aa501d9b8ef443fd36c73e6956475d33e2c05ca40dd0d6872790179932011bb4aed64794e7795236f5b6965cfbe3d05e29758f23d5e8c9dda
   languageName: node
   linkType: hard
 
