@@ -27,3 +27,7 @@ jobs:
         run: ./gradlew wrapper --gradle-version 6.8.2
       - name: Test Library with Gradle
         run: ./gradlew check
+      - name: Upload Code Coverage to codecov
+        run: bash <(curl -s https://codecov.io/bash)
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
