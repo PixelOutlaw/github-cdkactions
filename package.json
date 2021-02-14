@@ -1,9 +1,9 @@
 {
-  "name": "@pixeloutlaw/github-cdkactions",
+  "name": "@mythicdrops/github-cdkactions",
   "version": "0.0.0-development",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PixelOutlaw/github-cdkactions.git"
+    "url": "https://github.com/MythicDrops/github-cdkactions.git"
   },
   "author": "Richard Harrah",
   "license": "MIT",
