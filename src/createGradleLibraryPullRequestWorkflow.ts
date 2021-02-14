@@ -45,6 +45,13 @@ export const createGradleLibraryPullRequestWorkflow = (
         name: "Test Library with Gradle",
         run: dedent`./gradlew check`,
       },
+      {
+        name: "Upload Code Coverage to codecov",
+        run: "bash <(curl -s https://codecov.io/bash)",
+        env: {
+          CODECOV_TOKEN: `\${{ secrets.CODECOV_TOKEN }}`,
+        },
+      },
     ],
   });
   return workflow;
