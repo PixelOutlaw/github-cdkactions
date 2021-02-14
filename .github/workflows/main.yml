@@ -10,9 +10,15 @@ jobs:
   test:
     name: Build, lint, and test on Node 14
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+
+      - name: Turnstyle
+        uses: softprops/turnstyle@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Use Node 14.x
         uses: actions/setup-node@v2
