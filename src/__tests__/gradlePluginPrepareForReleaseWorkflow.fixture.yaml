@@ -9,11 +9,16 @@ jobs:
   prepare-for-release:
     name: Prepare For Release
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Check-out Code
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Turnstyle
+        uses: softprops/turnstyle@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.9
         with:

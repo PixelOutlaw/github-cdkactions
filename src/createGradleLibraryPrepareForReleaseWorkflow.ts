@@ -15,15 +15,24 @@ export const createGradleLibraryPrepareForReleaseWorkflow = (
   });
 
   const preTestSteps = config?.preTestSteps ?? [];
+  const timeoutMinutes = config?.timeoutMinutes ?? 10;
 
   new Job(workflow, "prepare-for-release", {
     name: "Prepare For Release",
     runsOn: "ubuntu-latest",
+    timeoutMinutes,
     steps: [
       {
         name: "Check-out Code",
         uses: "actions/checkout@v2",
         with: { "fetch-depth": 0 },
+      },
+      {
+        name: "Turnstyle",
+        uses: "softprops/turnstyle@v1",
+        env: {
+          GITHUB_TOKEN: `\${{ secrets.GITHUB_TOKEN }}`,
+        },
       },
       {
         name: "Install GitVersion",

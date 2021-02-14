@@ -7,6 +7,8 @@ export interface GradleLibraryConfig {
   gradleVersion?: string;
 
   preTestSteps?: StepsProps[];
+
+  timeoutMinutes?: number;
 }
 
 /**
@@ -18,4 +20,6 @@ export interface GradlePluginConfig {
   primaryGradleVersion?: string;
 
   supportedGradleVersions?: string[];
+
+  timeoutMinutes?: number;
 }
