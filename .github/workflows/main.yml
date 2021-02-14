@@ -30,6 +30,11 @@ jobs:
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
 
+      - name: Report Code Coverage to codecov
+        run: bash <(curl -s https://codecov.io/bash)
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
       - name: Build
         run: yarn build
 
