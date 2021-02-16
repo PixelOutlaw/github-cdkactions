@@ -30,9 +30,6 @@ jobs:
         with:
           java-version: "1.8"
 
-      - name: Make Gradle Wrapper Executable
-        run: chmod +x ./src/__tests__/test-project/gradlew
-
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
 
