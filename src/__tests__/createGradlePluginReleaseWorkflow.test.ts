@@ -2,7 +2,6 @@ import { App, Stack } from "cdkactions";
 import { readFileSync } from "fs";
 import { load } from "js-yaml";
 import { join } from "path";
-
 import { createGradlePluginReleaseWorkflow } from "../createGradlePluginReleaseWorkflow";
 
 const gradlePluginReleaseWorkflowRaw = readFileSync(

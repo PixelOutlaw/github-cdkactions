@@ -1,6 +1,5 @@
 import { Job, Stack, Workflow } from "cdkactions";
 import dedent from "ts-dedent";
-
 import { GradlePluginConfig } from "./types";
 
 export const createGradlePluginPrepareForReleaseWorkflow = (

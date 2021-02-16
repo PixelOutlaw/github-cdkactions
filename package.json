@@ -44,7 +44,6 @@
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
     "@size-limit/file": "4.9.2",
-    "@trivago/prettier-plugin-sort-imports": "1.4.2",
     "@types/eslint": "7.2.6",
     "@types/eslint-plugin-prettier": "3.1.0",
     "@types/is-ci": "2.0.0",
@@ -72,6 +71,7 @@
     "js-yaml": "4.0.0",
     "pinst": "2.1.4",
     "prettier": "2.2.1",
+    "prettier-plugin-organize-imports": "1.1.1",
     "prettier-plugin-pkg": "0.8.0",
     "prettier-plugin-sh": "0.6.0",
     "pretty-quick": "3.1.0",
@@ -80,6 +80,9 @@
     "tsdx": "0.14.1",
     "tslib": "2.1.0",
     "typescript": "4.1.5"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "commitlint": {
     "extends": [
@@ -99,31 +102,9 @@
       }
     }
   },
-  "prettier": {
-    "importOrder": [
-      "^[./]"
-    ],
-    "importOrderSeparation": true,
-    "plugins": [
-      "@trivago/prettier-plugin-sort-imports",
-      "prettier-plugin-pkg",
-      "prettier-plugin-sh"
-    ]
-  },
   "release": {
     "branches": [
-      "+([0-9])?(.{+([0-9]),x}).x",
-      "main",
-      "next",
-      "next-major",
-      {
-        "name": "beta",
-        "prerelease": true
-      },
-      {
-        "name": "alpha",
-        "prerelease": true
-      }
+      "main"
     ]
   },
   "size-limit": [
@@ -139,8 +120,5 @@
   "volta": {
     "node": "14.15.5",
     "npm": "7.5.2"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

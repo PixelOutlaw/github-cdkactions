@@ -1,6 +1,5 @@
 import { Job, Stack, Workflow } from "cdkactions";
 import dedent from "ts-dedent";
-
 import { GradleLibraryConfig } from "./types";
 
 export const createGradleLibraryPrepareForReleaseWorkflow = (
