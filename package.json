@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "cdkactions": "0.2.3",
-    "constructs": "3.3.20",
+    "constructs": "3.3.29",
     "ts-dedent": "2.0.0"
   },
   "devDependencies": {
@@ -48,11 +48,11 @@
     "@types/eslint-plugin-prettier": "3.1.0",
     "@types/is-ci": "2.0.0",
     "@types/js-yaml": "4.0.0",
-    "@types/node": "14.14.27",
+    "@types/node": "14.14.31",
     "@types/prettier": "2.2.1",
     "@types/semantic-release": "17.2.0",
-    "@typescript-eslint/eslint-plugin": "4.15.0",
-    "@typescript-eslint/parser": "4.15.0",
+    "@typescript-eslint/eslint-plugin": "4.15.1",
+    "@typescript-eslint/parser": "4.15.1",
     "@yarnpkg/pnpify": "2.4.0",
     "babel-eslint": "10.1.0",
     "commitizen": "4.2.3",
@@ -60,14 +60,14 @@
     "eslint": "7.20.0",
     "eslint-config-prettier": "7.2.0",
     "eslint-config-react-app": "6.0.0",
-    "eslint-plugin-flowtype": "5.2.0",
+    "eslint-plugin-flowtype": "5.2.2",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-react": "7.22.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "husky": "5.0.9",
-    "is-ci": "2.0.0",
+    "is-ci": "3.0.0",
     "js-yaml": "4.0.0",
     "pinst": "2.1.4",
     "prettier": "2.2.1",
@@ -119,6 +119,6 @@
   ],
   "volta": {
     "node": "14.15.5",
-    "npm": "7.5.2"
+    "npm": "7.5.4"
   }
 }
