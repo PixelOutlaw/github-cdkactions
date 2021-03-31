@@ -39,7 +39,7 @@
   "dependencies": {
     "cdkactions": "0.2.3",
     "constructs": "3.3.43",
-    "ts-dedent": "2.0.0"
+    "ts-dedent": "2.1.1"
   },
   "devDependencies": {
     "@commitlint/cli": "12.0.0",
