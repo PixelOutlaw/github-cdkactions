@@ -34,8 +34,11 @@ export const createGradlePluginPullRequestWorkflow = (
       },
       {
         name: "Set up JDK",
-        uses: "actions/setup-java@v1",
-        with: { "java-version": `\${{ matrix.java }}` },
+        uses: "actions/setup-java@v2",
+        with: {
+          distribution: "adopt",
+          "java-version": "1.8",
+        },
       },
       {
         name: "Make Gradle Wrapper Executable",
