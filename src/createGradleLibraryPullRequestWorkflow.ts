@@ -14,7 +14,7 @@ export const createGradleLibraryPullRequestWorkflow = (
     },
   });
 
-  const gradleVersion = config?.gradleVersion ?? "6.8.2";
+  const gradleVersion = config?.gradleVersion ?? "7.0.2";
   const preTestSteps = config?.preTestSteps ?? [];
 
   new Job(workflow, "pull-request", {

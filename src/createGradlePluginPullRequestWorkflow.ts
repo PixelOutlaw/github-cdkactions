@@ -15,7 +15,7 @@ export const createGradlePluginPullRequestWorkflow = (
   });
 
   const pluginName = config.pluginName;
-  const supportedGradleVersions = config.supportedGradleVersions ?? ["6.8.2"];
+  const supportedGradleVersions = config.supportedGradleVersions ?? ["7.0.2"];
 
   new Job(workflow, "pull-request", {
     name: "CI",

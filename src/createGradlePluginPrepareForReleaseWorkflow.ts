@@ -14,7 +14,7 @@ export const createGradlePluginPrepareForReleaseWorkflow = (
   });
 
   const pluginName = config.pluginName;
-  const primaryGradleVersion = config.primaryGradleVersion ?? "6.8.2";
+  const primaryGradleVersion = config.primaryGradleVersion ?? "7.0.2";
   const timeoutMinutes = config?.timeoutMinutes ?? 10;
 
   new Job(workflow, "prepare-for-release", {

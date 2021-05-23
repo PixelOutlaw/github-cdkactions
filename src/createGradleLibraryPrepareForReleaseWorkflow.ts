@@ -54,7 +54,7 @@ export const createGradleLibraryPrepareForReleaseWorkflow = (
       },
       {
         name: "Set Gradle Version",
-        run: dedent`./gradlew wrapper --gradle-version 6.8.2`,
+        run: dedent`./gradlew wrapper --gradle-version 7.0.2`,
       },
       ...preTestSteps, // expand preTestSteps
       {
