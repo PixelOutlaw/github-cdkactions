@@ -1,16 +1,5 @@
 import { App, Stack } from "cdkactions";
-import { readFileSync } from "fs";
-import { load } from "js-yaml";
-import { join } from "path";
 import { createGradlePluginPrepareForReleaseWorkflow } from "../createGradlePluginPrepareForReleaseWorkflow";
-
-const gradlePluginPrepareForReleaseWorkflowRaw = readFileSync(
-  join(__dirname, "gradlePluginPrepareForReleaseWorkflow.fixture.yaml"),
-  "utf-8"
-);
-const gradlePluginPrepareForReleaseWorkflow = load(
-  gradlePluginPrepareForReleaseWorkflowRaw
-);
 
 describe("createGradlePluginPrepareForReleaseWorkflow", () => {
   let app: App;
@@ -27,6 +16,6 @@ describe("createGradlePluginPrepareForReleaseWorkflow", () => {
       createGradlePluginPrepareForReleaseWorkflow(stack, {
         pluginName,
       }).toGHAction()
-    ).toEqual(gradlePluginPrepareForReleaseWorkflow);
+    ).toMatchSnapshot();
   });
 });

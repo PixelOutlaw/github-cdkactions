@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createGradleLibraryPullRequestWorkflow generates a GitHub Actions workflow 1`] = `
+Object {
+  "jobs": Object {
+    "pull-request": Object {
+      "name": "CI",
+      "runs-on": "ubuntu-latest",
+      "steps": Array [
+        Object {
+          "name": "Check-out Code",
+          "uses": "actions/checkout@v2",
+          "with": Object {
+            "fetch-depth": 0,
+          },
+        },
+        Object {
+          "name": "Set up JDK",
+          "uses": "actions/setup-java@v2",
+          "with": Object {
+            "distribution": "adopt",
+            "java-version": "1.8",
+          },
+        },
+        Object {
+          "name": "Make Gradle Wrapper Executable",
+          "run": "chmod +x ./gradlew",
+        },
+        Object {
+          "name": "Set Gradle Version",
+          "run": "./gradlew wrapper --gradle-version 7.0.2",
+        },
+        Object {
+          "name": "Test Library with Gradle",
+          "run": "./gradlew check",
+        },
+        Object {
+          "env": Object {
+            "CODECOV_TOKEN": "\${{ secrets.CODECOV_TOKEN }}",
+          },
+          "name": "Upload Code Coverage to codecov",
+          "run": "bash <(curl -s https://codecov.io/bash)",
+        },
+      ],
+    },
+  },
+  "name": "Pull Request",
+  "on": Object {
+    "pull_request": Object {
+      "branches": Array [
+        "main",
+      ],
+    },
+    "push": Object {
+      "branches-ignore": Array [
+        "main",
+      ],
+    },
+  },
+}
+`;

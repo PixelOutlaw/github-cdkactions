@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createGradleLibraryPrepareForReleaseWorkflow generates a GitHub Actions workflow 1`] = `
+Object {
+  "jobs": Object {
+    "prepare-for-release": Object {
+      "name": "Prepare For Release",
+      "runs-on": "ubuntu-latest",
+      "steps": Array [
+        Object {
+          "name": "Check-out Code",
+          "uses": "actions/checkout@v2",
+          "with": Object {
+            "fetch-depth": 0,
+          },
+        },
+        Object {
+          "env": Object {
+            "GITHUB_TOKEN": "\${{ secrets.GITHUB_TOKEN }}",
+          },
+          "name": "Turnstyle",
+          "uses": "softprops/turnstyle@v1",
+        },
+        Object {
+          "name": "Install GitVersion",
+          "uses": "gittools/actions/gitversion/setup@v0.9.9",
+          "with": Object {
+            "versionSpec": "5.x",
+          },
+        },
+        Object {
+          "id": "gitversion",
+          "name": "Determine Version",
+          "uses": "gittools/actions/gitversion/execute@v0.9.9",
+        },
+        Object {
+          "name": "Set up JDK",
+          "uses": "actions/setup-java@v2",
+          "with": Object {
+            "distribution": "adopt",
+            "java-version": "1.8",
+          },
+        },
+        Object {
+          "name": "Make Gradle Wrapper Executable",
+          "run": "chmod +x ./gradlew",
+        },
+        Object {
+          "name": "Set Gradle Version",
+          "run": "./gradlew wrapper --gradle-version 7.0.2",
+        },
+        Object {
+          "name": "Test Library with Gradle",
+          "run": "./gradlew check",
+        },
+        Object {
+          "name": "Push Tag",
+          "uses": "mathieudutour/github-tag-action@v5.1",
+          "with": Object {
+            "create_annotated_tag": true,
+            "custom_tag": "\${{ steps.gitversion.outputs.semVer }}",
+            "github_token": "\${{ secrets.ACTIONS_PAT }}",
+            "tag_prefix": "",
+          },
+        },
+        Object {
+          "env": Object {
+            "ORG_GRADLE_PROJECT_signingKey": "\${{ secrets.GPG_PRIVATE_KEY }}",
+            "ORG_GRADLE_PROJECT_signingPassword": "\${{ secrets.GPG_PASSWORD }}",
+            "OSSRH_PASSWORD": "\${{ secrets.OSSRH_TOKEN }}",
+            "OSSRH_USERNAME": "\${{ secrets.OSSRH_USERNAME }}",
+          },
+          "name": "Publish Library to Maven Central",
+          "run": "./gradlew publishToSonatype           -Pversion=\${{ steps.gitversion.outputs.semVer }}",
+        },
+        Object {
+          "env": Object {
+            "OSSRH_PASSWORD": "\${{ secrets.OSSRH_TOKEN }}",
+            "OSSRH_USERNAME": "\${{ secrets.OSSRH_USERNAME }}",
+          },
+          "name": "Close and Release Repository on Maven Central",
+          "run": "./gradlew closeAndReleaseRepository",
+        },
+      ],
+      "timeout-minutes": 10,
+    },
+  },
+  "name": "Prepare For Release",
+  "on": Object {
+    "push": Object {
+      "branches": Array [
+        "main",
+      ],
+    },
+  },
+}
+`;

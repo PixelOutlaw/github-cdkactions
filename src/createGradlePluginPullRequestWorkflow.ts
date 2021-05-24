@@ -37,7 +37,7 @@ export const createGradlePluginPullRequestWorkflow = (
         uses: "actions/setup-java@v2",
         with: {
           distribution: "adopt",
-          "java-version": "1.8",
+          "java-version": `\${{ matrix.java }}`,
         },
       },
       {

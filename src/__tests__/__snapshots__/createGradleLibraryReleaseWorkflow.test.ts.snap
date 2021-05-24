@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createGradleLibraryReleaseWorkflow generates a GitHub Actions workflow 1`] = `
+Object {
+  "jobs": Object {
+    "release": Object {
+      "name": "Release",
+      "runs-on": "ubuntu-latest",
+      "steps": Array [
+        Object {
+          "name": "Check-out Code",
+          "uses": "actions/checkout@v2",
+          "with": Object {
+            "fetch-depth": 0,
+          },
+        },
+        Object {
+          "env": Object {
+            "GITHUB_TOKEN": "\${{ secrets.GITHUB_TOKEN }}",
+          },
+          "id": "github_release",
+          "name": "Build Changelog",
+          "uses": "mikepenz/release-changelog-builder-action@main",
+        },
+        Object {
+          "env": Object {
+            "GITHUB_TOKEN": "\${{ secrets.GITHUB_TOKEN }}",
+          },
+          "name": "Create GitHub Release",
+          "uses": "actions/create-release@v1",
+          "with": Object {
+            "body": "\${{ steps.github_release.outputs.changelog }}",
+            "release_name": "\${{ github.ref }}",
+            "tag_name": "\${{ github.ref }}",
+          },
+        },
+      ],
+    },
+  },
+  "name": "Create Release",
+  "on": Object {
+    "push": Object {
+      "tags": Array [
+        "*",
+      ],
+    },
+  },
+}
+`;

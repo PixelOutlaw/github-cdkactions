@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createGradlePluginPullRequestWorkflow generates a GitHub Actions workflow 1`] = `
+Object {
+  "jobs": Object {
+    "pull-request": Object {
+      "name": "CI",
+      "runs-on": "ubuntu-latest",
+      "steps": Array [
+        Object {
+          "name": "Check-out Code",
+          "uses": "actions/checkout@v2",
+          "with": Object {
+            "fetch-depth": 0,
+          },
+        },
+        Object {
+          "name": "Set up JDK",
+          "uses": "actions/setup-java@v2",
+          "with": Object {
+            "distribution": "adopt",
+            "java-version": "\${{ matrix.java }}",
+          },
+        },
+        Object {
+          "name": "Make Gradle Wrapper Executable",
+          "run": "chmod +x ./gradlew",
+        },
+        Object {
+          "name": "Set Gradle Version",
+          "run": "./gradlew wrapper --gradle-version \${{ matrix.gradle }}",
+        },
+        Object {
+          "name": "Test Plugin Directly with Gradle",
+          "run": "../gradlew check",
+          "working-directory": "pixeloutlaw-gradle-plugin",
+        },
+        Object {
+          "name": "Test Plugin Application with Gradle",
+          "run": "./gradlew check",
+        },
+      ],
+      "strategy": Object {
+        "matrix": Object {
+          "gradle": Array [
+            "7.0.2",
+          ],
+          "java": Array [
+            "1.8",
+            "11",
+            "15",
+          ],
+        },
+      },
+    },
+  },
+  "name": "Pull Request",
+  "on": Object {
+    "pull_request": Object {
+      "branches": Array [
+        "main",
+      ],
+    },
+    "push": Object {
+      "branches-ignore": Array [
+        "main",
+      ],
+    },
+  },
+}
+`;

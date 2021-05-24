@@ -1,14 +1,5 @@
 import { App, Stack } from "cdkactions";
-import { readFileSync } from "fs";
-import { load } from "js-yaml";
-import { join } from "path";
 import { createGradlePluginReleaseWorkflow } from "../createGradlePluginReleaseWorkflow";
-
-const gradlePluginReleaseWorkflowRaw = readFileSync(
-  join(__dirname, "gradlePluginReleaseWorkflow.fixture.yaml"),
-  "utf-8"
-);
-const gradlePluginReleaseWorkflow = load(gradlePluginReleaseWorkflowRaw);
 
 describe("createGradlePluginReleaseWorkflow", () => {
   let app: App;
@@ -20,8 +11,8 @@ describe("createGradlePluginReleaseWorkflow", () => {
   });
 
   it("generates a GitHub Actions workflow", () => {
-    expect(createGradlePluginReleaseWorkflow(stack).toGHAction()).toEqual(
-      gradlePluginReleaseWorkflow
-    );
+    expect(
+      createGradlePluginReleaseWorkflow(stack).toGHAction()
+    ).toMatchSnapshot();
   });
 });

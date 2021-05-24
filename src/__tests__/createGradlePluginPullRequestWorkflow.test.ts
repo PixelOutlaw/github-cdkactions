@@ -1,16 +1,5 @@
 import { App, Stack } from "cdkactions";
-import { readFileSync } from "fs";
-import { load } from "js-yaml";
-import { join } from "path";
 import { createGradlePluginPullRequestWorkflow } from "../createGradlePluginPullRequestWorkflow";
-
-const gradlePluginPullRequestWorkflowRaw = readFileSync(
-  join(__dirname, "gradlePluginPullRequestWorkflow.fixture.yaml"),
-  "utf-8"
-);
-const gradlePluginPullRequestWorkflow = load(
-  gradlePluginPullRequestWorkflowRaw
-);
 
 describe("createGradlePluginPullRequestWorkflow", () => {
   let app: App;
@@ -27,6 +16,6 @@ describe("createGradlePluginPullRequestWorkflow", () => {
       createGradlePluginPullRequestWorkflow(stack, {
         pluginName,
       }).toGHAction()
-    ).toEqual(gradlePluginPullRequestWorkflow);
+    ).toMatchSnapshot();
   });
 });
