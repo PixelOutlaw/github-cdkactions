@@ -76,8 +76,7 @@ export const createGradleLibraryPrepareForReleaseWorkflow = (
       },
       {
         name: "Publish Library to Maven Central",
-        run: dedent`./gradlew publishToSonatype \
-          -Pversion=\${{ steps.gitversion.outputs.semVer }}`,
+        run: dedent`./gradlew publishToSonatype -Pversion=\${{ steps.gitversion.outputs.semVer }}`,
         env: {
           ORG_GRADLE_PROJECT_signingKey: `\${{ secrets.GPG_PRIVATE_KEY }}`,
           ORG_GRADLE_PROJECT_signingPassword: `\${{ secrets.GPG_PASSWORD }}`,

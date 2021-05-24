@@ -71,7 +71,7 @@ Object {
             "OSSRH_USERNAME": "\${{ secrets.OSSRH_USERNAME }}",
           },
           "name": "Publish Library to Maven Central",
-          "run": "./gradlew publishToSonatype           -Pversion=\${{ steps.gitversion.outputs.semVer }}",
+          "run": "./gradlew publishToSonatype -Pversion=\${{ steps.gitversion.outputs.semVer }}",
         },
         Object {
           "env": Object {

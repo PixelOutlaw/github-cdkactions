@@ -81,10 +81,12 @@ export const createGradlePluginPrepareForReleaseWorkflow = (
       },
       {
         name: "Publish Plugins to Gradle Plugin Portal",
-        run: dedent`./gradlew :${pluginName}:publishPlugins \
-          -Pversion=\${{ steps.gitversion.outputs.semVer }} \
-          -Pgradle.publish.key=\${{ secrets.GRADLE_PUBLISH_KEY }} \
-          -Pgradle.publish.secret=\${{ secrets.GRADLE_PUBLISH_SECRET }}`,
+        run: dedent`
+        ./gradlew :${pluginName}:publishPlugins \
+        -Pversion=\${{ steps.gitversion.outputs.semVer }} \
+        -Pgradle.publish.key=\${{ secrets.GRADLE_PUBLISH_KEY }} \
+        -Pgradle.publish.secret=\${{ secrets.GRADLE_PUBLISH_SECRET }}
+        `,
       },
     ],
   });
