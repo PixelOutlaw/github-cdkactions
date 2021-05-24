@@ -38,7 +38,7 @@ Object {
           "uses": "actions/setup-java@v2",
           "with": Object {
             "distribution": "adopt",
-            "java-version": "1.8",
+            "java-version": "8",
           },
         },
         Object {

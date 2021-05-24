@@ -23,7 +23,7 @@ export const createGradlePluginPullRequestWorkflow = (
     strategy: {
       matrix: {
         gradle: supportedGradleVersions,
-        java: ["1.8", "11", "15"],
+        java: ["8", "11", "15"],
       },
     },
     steps: [
